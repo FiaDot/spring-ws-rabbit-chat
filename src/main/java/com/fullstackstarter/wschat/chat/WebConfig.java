@@ -12,6 +12,7 @@ import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
+import org.springframework.web.socket.handler.PerConnectionWebSocketHandler;
 
 
 
@@ -26,12 +27,14 @@ public class WebConfig extends WebMvcConfigurerAdapter implements WebSocketConfi
         registry.addHandler(chatHandler(), "/echo");
 
         // SocketJS 지원 url을 /socketjs/echo에 연결합니다.
-        registry.addHandler(chatHandler(), "/socketjs/echo").withSockJS();
+       //  registry.addHandler(chatHandler(), "/socketjs/echo").withSockJS();
     }
 
+    
     @Bean
     public WebSocketHandler chatHandler() {
-        return new EchoWebSocketHandler();
+        // return new EchoWebSocketHandler();
+    	return new PerConnectionWebSocketHandler(EchoWebSocketHandler.class);
     }
 
     @Override

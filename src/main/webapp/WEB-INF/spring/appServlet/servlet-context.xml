@@ -26,6 +26,7 @@
 	<context:component-scan base-package="com.fullstackstarter.wschat" />
 
 
+	<!--  
 
 	<rabbit:connection-factory id="connectionFactory" host="localhost" username="guest" password="guest" />
 
@@ -47,6 +48,6 @@
 	</rabbit:listener-container>
 
 	<beans:bean id="MessageQueueHandler" class="com.fullstackstarter.wschat.mq.MessageQueueHandler" />
-
+	-->
 
 </beans:beans>

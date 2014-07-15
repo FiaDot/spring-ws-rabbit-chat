@@ -9,7 +9,7 @@
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
 		<java-version>1.6</java-version>
-		<org.springframework-version>4.0.1.RELEASE</org.springframework-version>
+		<org.springframework-version>4.0.5.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.8.0</org.aspectj-version>
 		<org.slf4j-version>1.7.7</org.slf4j-version>
 	</properties>
@@ -130,6 +130,15 @@
 			<version>1.0</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<!-- 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-messaging</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		-->
+		
         
         <!-- JSON parser  -->
 		<dependency>
@@ -200,6 +209,23 @@
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.11</version>
+                <configuration>
+                    <contextPath>/main</contextPath>
+                    <scanIntervalSeconds>3</scanIntervalSeconds>
+                    <!-- 포트를 변경하고 싶은 경우 connectors 설정 이용 -->
+                    <connectors>
+                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                            <port>8081</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                    </connectors>
+                </configuration>
+            </plugin>
+            
         </plugins>
     </build>
     <url>www.fullstackstarter.com</url>
